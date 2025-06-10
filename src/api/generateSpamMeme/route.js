@@ -1,0 +1,1 @@
+// Remove the entire function since we're removing the meme generator feature
