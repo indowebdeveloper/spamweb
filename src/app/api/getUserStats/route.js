@@ -1,8 +1,8 @@
 import { NextResponse } from "next/server";
-import dbUtils from "../../../db/utils";
+import supabaseUtils from "../../../db/supabase-utils";
 
-// Initialize the database
-require("../../../db/initialize");
+// Initialize the Supabase database
+import "../../../db/supabase-init";
 
 export async function POST(request) {
   const { userId } = await request.json();
@@ -18,8 +18,8 @@ export async function POST(request) {
   }
 
   try {
-    // Use the database utility function to get user stats
-    const result = dbUtils.getUserStats(userId);
+    // Use the Supabase database utility function to get user stats
+    const result = await supabaseUtils.getUserStats(userId);
 
     return NextResponse.json({
       userStats: result.userStats,

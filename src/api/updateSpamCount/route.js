@@ -1,8 +1,8 @@
 import { NextResponse } from "next/server";
-import dbUtils from "../../db/utils";
+import supabaseUtils from "../../db/supabase-utils";
 
-// Initialize the database by running migrations
-import "../../db/run-migrations";
+// Initialize the Supabase database
+import "../../db/supabase-init";
 
 async function handler(requestData) {
   const { userId, clickCount = 1 } = requestData;
@@ -18,8 +18,8 @@ async function handler(requestData) {
   }
 
   try {
-    // Use the database utility function to record spam clicks
-    const result = dbUtils.recordSpamClicks(userId, clickCount);
+    // Use the Supabase database utility function to record spam clicks
+    const result = await supabaseUtils.recordSpamClicks(userId, clickCount);
 
     return {
       userStats: result.userStats,

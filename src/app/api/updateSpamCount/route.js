@@ -1,8 +1,8 @@
 import { NextResponse } from "next/server";
-import dbUtils from "../../../db/utils";
+import supabaseUtils from "../../../db/supabase-utils";
 
-// Initialize the database
-require("../../../db/initialize");
+// Initialize the Supabase database
+import "../../../db/supabase-init";
 
 export async function POST(request) {
   const requestData = await request.json();
@@ -19,8 +19,8 @@ export async function POST(request) {
   }
 
   try {
-    // Use the database utility function to record spam clicks
-    const result = dbUtils.recordSpamClicks(userId, clickCount);
+    // Use the Supabase database utility function to record spam clicks
+    const result = await supabaseUtils.recordSpamClicks(userId, clickCount);
 
     return NextResponse.json({
       userStats: result.userStats,

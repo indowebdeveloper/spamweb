@@ -1,8 +1,8 @@
 import { NextResponse } from "next/server";
-import dbUtils from "../../db/utils";
+import supabaseUtils from "../../db/supabase-utils";
 
-// Initialize the database by running migrations
-import "../../db/run-migrations";
+// Initialize the Supabase database
+import "../../db/supabase-init";
 
 async function handler({ userId }) {
   if (!userId) {
@@ -16,8 +16,8 @@ async function handler({ userId }) {
   }
 
   try {
-    // Use the database utility function to get user stats
-    const result = dbUtils.getUserStats(userId);
+    // Use the Supabase database utility function to get user stats
+    const result = await supabaseUtils.getUserStats(userId);
 
     return {
       userStats: result.userStats,

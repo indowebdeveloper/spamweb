@@ -7,15 +7,15 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "db:init": "node src/db/init.js",
-    "vercel-build": "npm run db:init && next build"
+    "vercel-build": "next build",
+    "db:init": "node scripts/init-supabase-db.js"
   },
   "dependencies": {
-    "better-sqlite3": "^11.10.0",
+    "@supabase/supabase-js": "^2.50.0",
+    "dotenv": "^16.3.1",
     "next": "14.0.4",
     "react": "^18",
-    "react-dom": "^18",
-    "sqlite3": "^5.1.7"
+    "react-dom": "^18"
   },
   "devDependencies": {
     "autoprefixer": "^10.0.1",
