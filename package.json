@@ -7,7 +7,8 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "db:init": "node src/db/init.js"
+    "db:init": "node src/db/init.js",
+    "vercel-build": "npm run db:init && next build"
   },
   "dependencies": {
     "better-sqlite3": "^11.10.0",
